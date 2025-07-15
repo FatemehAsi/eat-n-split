@@ -57,7 +57,7 @@ export default function App() {
       {showWelcome && friends.length === 0 ? (
         <div className="welcome">
           <button className="welcome-button" onClick={handleStartSpliting}>
-            {t("start")}
+            {t("buttons.start")}
           </button>
           {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         </div>

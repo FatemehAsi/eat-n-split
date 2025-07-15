@@ -12,9 +12,9 @@
   "image_url": "Image URL",
   "owe_user": "{{name}} owes you ${{amount}}",
   "user_owes": "You owe {{name}} ${{amount}}",
-  "settled": "Settled up",
   "bill_value": "Bill value",
   "who_pays": "Who is paying the bill?",
   "you": "You",
-  "select_friends": "Select friends involved"
+  "select_friends": "Select friends involved",
+  "friend": "Friend"
 }

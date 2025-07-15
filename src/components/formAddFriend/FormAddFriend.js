@@ -27,7 +27,7 @@ function FormAddFriend({ onAddFriend }) {
   }
   return (
     <form className="form-add-friend" onSubmit={handleSubmitAddFriendForm}>
-      <label>👩🏾‍🤝‍👩🏼 Friend</label>
+      <label>👩🏾‍🤝‍👩🏼 {t("friend")}</label>
       <input
         type="text"
         value={name}
@@ -41,7 +41,7 @@ function FormAddFriend({ onAddFriend }) {
         onChange={(e) => setImage(e.target.value)}
       />
 
-      <Button labelKey="add_friend" />
+      <Button labelKey="buttons.add_friend" />
     </form>
   );
 }

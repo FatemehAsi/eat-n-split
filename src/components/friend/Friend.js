@@ -28,8 +28,6 @@ function Friend({ friend, onSelection, selectedFriend }) {
         </p>
       )}
 
-      {friend.balance === 0 && <p>{t("settled")}</p>}
-
       <Button onClick={() => onSelection(friend)}>
         {isSelected ? t("buttons.close") : t("buttons.select")}
       </Button>

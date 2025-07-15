@@ -6,7 +6,7 @@ function Navbar() {
   function toggleLang() {
     let newLang = i18n.language === "fa" ? "en" : "fa";
     i18n.changeLanguage(newLang);
-    document.getElement.lang = newLang;
+    document.documentElement.lang = newLang;
     document.documentElement.dir = newLang = "fa" ? "rtl" : "lrt";
   }
 
