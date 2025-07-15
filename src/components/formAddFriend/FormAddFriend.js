@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Button from "../button/Button";
+import { useTranslation } from "react-i18next";
 
 function FormAddFriend({ onAddFriend }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("https://i.pravatar.cc/48");
+  const { t } = useTranslation();
 
   function handleSubmitAddFriendForm(e) {
     e.preventDefault();
@@ -32,14 +34,14 @@ function FormAddFriend({ onAddFriend }) {
         onChange={(e) => setName(e.target.value)}
       />
 
-      <label>🖼 Image URL</label>
+      <label>🖼 {t("image_url")}</label>
       <input
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
 
-      <Button>Add</Button>
+      <Button labelKey="add_friend" />
     </form>
   );
 }

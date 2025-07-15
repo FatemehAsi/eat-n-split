@@ -1,7 +1,9 @@
 import Button from "../button/Button";
+import { useTranslation } from "react-i18next";
 
 function Friend({ friend, onSelection, selectedFriend }) {
   const isSelected = selectedFriend?.id === friend.id;
+  const { t } = useTranslation();
 
   return (
     <li className={isSelected ? "selected" : "default-style"}>
@@ -10,18 +12,26 @@ function Friend({ friend, onSelection, selectedFriend }) {
 
       {friend.balance < 0 && (
         <p className="red">
-          You owe {friend.name} ${Math.abs(friend.balance).toFixed(2)}
+          {t("user_owes", {
+            name: friend.name,
+            amount: Math.abs(friend.balance).toFixed(2),
+          })}
         </p>
       )}
 
       {friend.balance > 0 && (
         <p className="green">
-          {friend.name} owes you ${Math.abs(friend.balance).toFixed(2)}
+          {t("owe_user", {
+            name: friend.name,
+            amount: Math.abs(friend.balance).toFixed(2),
+          })}
         </p>
       )}
 
-      <Button className="button" onClick={() => onSelection(friend)}>
-        {isSelected ? "Close" : "Select"}
+      {friend.balance === 0 && <p>{t("settled")}</p>}
+
+      <Button onClick={() => onSelection(friend)}>
+        {isSelected ? t("buttons.close") : t("buttons.select")}
       </Button>
     </li>
   );

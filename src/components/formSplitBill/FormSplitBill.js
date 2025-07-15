@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Button from "../button/Button";
+import { useTranslation } from "react-i18next";
 
 function FormSplitBill({ friends, onSplitBill }) {
   const [bill, setBill] = useState("");
   const [payer, setPayer] = useState("user");
   const [selectedFriendIds, setSelectedFriendIds] = useState([]);
+  const { t } = useTranslation();
 
   function handleToggleFriend(id) {
     setSelectedFriendIds((prev) =>
@@ -24,17 +26,17 @@ function FormSplitBill({ friends, onSplitBill }) {
 
   return (
     <form className="form-split-bill" onSubmit={handleSubmit}>
-      <h2>Split a bill</h2>
-      <label>💸 Bill value</label>
+      <h2>{t("buttons.split_bill")}</h2>
+      <label>💸 {t("bill_value")}</label>
       <input
         type="number"
         value={bill}
         onChange={(e) => setBill(e.target.value)}
       />
 
-      <label>🤑 Who is paying the bill?</label>
+      <label>🤑 {t("who_pays")}</label>
       <select value={payer} onChange={(e) => setPayer(e.target.value)}>
-        <option value="user">You</option>
+        <option value="user">{t("you")}</option>
         {friends.map((friend) => (
           <option value={friend.id} key={friend.id}>
             {friend.name}
@@ -42,7 +44,7 @@ function FormSplitBill({ friends, onSplitBill }) {
         ))}
       </select>
 
-      <label>👩🏾‍🤝‍👩🏼 Select friends involved</label>
+      <label>👩🏾‍🤝‍👩🏼 {t("select_friends")}</label>
       <div style={{ display: "flex", flexDirection: "column" }}>
         {friends.map((friend) => (
           <label key={friend.id}>
@@ -56,7 +58,7 @@ function FormSplitBill({ friends, onSplitBill }) {
         ))}
       </div>
 
-      <Button>Split bill</Button>
+      <Button labelKey="buttons.split_bill" />
     </form>
   );
 }

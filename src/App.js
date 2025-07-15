@@ -4,6 +4,8 @@ import FormAddFriend from "./components/formAddFriend/FormAddFriend";
 import FormSplitBill from "./components/formSplitBill/FormSplitBill";
 import Button from "./components/button/Button";
 import Navbar from "./components/navbar/Navbar";
+import { useTranslation } from "react-i18next";
+import "./i18n";
 
 const initialFriends = [];
 
@@ -12,6 +14,7 @@ export default function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [selectedFriends, setSelectedFriends] = useState(null);
   const [showWelcome, setShowWelcome] = useState(true);
+  const { t } = useTranslation();
 
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
@@ -54,7 +57,7 @@ export default function App() {
       {showWelcome && friends.length === 0 ? (
         <div className="welcome">
           <button className="welcome-button" onClick={handleStartSpliting}>
-            Start Splitting
+            {t("start")}
           </button>
           {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         </div>
@@ -68,7 +71,7 @@ export default function App() {
             />
             {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
             <Button onClick={handleShowAddFriend}>
-              {showAddFriend ? `close` : `Add friend`}
+              {showAddFriend ? t("buttons.close") : t("buttons.add_friend")}
             </Button>
           </div>
           {selectedFriends && (

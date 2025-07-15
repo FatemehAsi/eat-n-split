@@ -1,7 +1,11 @@
-function Button({ children, onClick }) {
+import { useTranslation } from "react-i18next";
+
+function Button({ labelKey, onClick, children }) {
+  const { t } = useTranslation();
+
   return (
     <button className="button" onClick={onClick}>
-      {children}
+      {labelKey ? t(labelKey) : children}
     </button>
   );
 }
