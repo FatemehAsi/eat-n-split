@@ -2,7 +2,13 @@
   --color-lightest: #fff4e6;
   --color-light: #ffe8cc;
   --color-medium: #ffa94d;
+  --color-selected: #efbc86;
   --color-dark: #ff922b;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 * {
@@ -23,14 +29,41 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-image: url("https://plus.unsplash.com/premium_photo-1667682942148-a0c98d1d70db?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* تاریکی */
+  backdrop-filter: blur(4px); /* محو */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .app {
+  position: relative;
+  z-index: 1;
+
   min-height: 66vh;
   display: grid;
   grid-template-columns: 34rem 44rem;
   column-gap: 4rem;
   align-items: start;
+
+  background-color: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  padding: 1rem;
 }
 
 .button {
@@ -46,6 +79,69 @@ body {
 
 .button:hover {
   background-color: var(--color-dark);
+}
+
+.navbar {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  color: #343a40;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-light);
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar h1 {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.navbar-button {
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-medium);
+  color: #343a40;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.welcome {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+.welcome-button {
+  font-size: 2rem;
+  padding: 1.6rem 3.2rem;
+  background-color: var(--color-light);
+  color: #343a40;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.welcome-button:hover {
+  background-color: var(--color-medium);
 }
 
 .sidebar ul {
@@ -68,9 +164,13 @@ body {
   transition: 0.5s;
 }
 
+.default-style {
+  background-color: var(--color-lightest);
+}
+
 .selected,
 .sidebar li:hover {
-  background-color: var(--color-lightest);
+  background-color: var(--color-selected);
 }
 
 .sidebar li img {
